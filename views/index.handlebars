@@ -6,8 +6,8 @@
   <div class="row">
     {{!-- column for form --}}
     <div class="col-12 col-md-3">
-      <form id="burger-form">
-        <input class="form-control" id="name-input" placeholder="Burger's Name"/>
+      <form id="burger-form" method="POST" action="/api/burgers">
+        <input class="form-control" id="name-input" placeholder="Burger's Name" name="burger_name"/>
         <button class="btn btn-success btn-block" type="submit">
           Add A Burger!
         </button>
@@ -27,12 +27,13 @@
               {{!-- this is the same as saying !== --}}
               {{#unless devoured}}
                 <li class="list-group-item d-flex">
-                  {{name}} 
+                  {{burger_name}} 
                   <span class="ml-auto">
                     <button 
                       data-id="{{id}}"
                       data-devoured="true"
-                      class="btn btn-sm btn-info update-burger"
+                      class="btn btn-sm btn-info update-burger burger_id"
+                      value={{this.id}}
                       >
                      Make Devoured
                     </button>
@@ -60,7 +61,7 @@
             {{!-- this is the same as saying !== --}}
             {{#if devoured}}
             <li class="list-group-item d-flex">
-              {{name}}
+              {{burger_name}}
               <span class="ml-auto">
                 <button data-id="{{id}}" data-devoured="false" class="btn btn-sm btn-info update-burger">
                   Available

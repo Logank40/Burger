@@ -1,5 +1,5 @@
 // import our burgers model
-const cats = require("../models/burgers");
+const burgers = require("../models/burgers");
 
 module.exports = app => {
 
@@ -17,8 +17,11 @@ module.exports = app => {
   app.post("/api/burgers", function(req, res) {
     // pass req.body into create method 
     // req.body => {name: "good burger"}
-    cats.create(req.body)
-      .then(dbBurgerData => res.json(dbBurgerData))
+    burgers.create(req.body)
+      .then(dbBurgerData => {
+        console.log(dbBurgerData)
+        res.redirect("/");
+      })
       .catch(err => {
         console.log(err);
         res.json(err);

@@ -1,5 +1,5 @@
 //import our connection
-const connection = require('./connection');
+const connection = require("../config/connection");
 
 // create a function that reads from the burgers table
 // SELECT * FROM burgers
@@ -43,7 +43,7 @@ const create = burgerDataObj => {
         return reject(err);
       }
       // this will throw to a .then()
-      return resolve(dBurgerData);
+      return resolve(dbBurgerData);
     });
   });
 };
